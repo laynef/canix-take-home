@@ -80,6 +80,10 @@ Rails.application.configure do
 
   config.react.server_renderer_extensions = ["jsx", "js", "tsx", "ts"]
 
+  config.react.jsx_transform_options = {
+    optional: ['es7.classProperties']
+  }
+
   # Use a different logger for distributed setups.
   # require "syslog/logger"
   # config.logger = ActiveSupport::TaggedLogging.new(Syslog::Logger.new "app-name")

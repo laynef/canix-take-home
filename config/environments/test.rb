@@ -54,6 +54,10 @@ Rails.application.configure do
 
   config.react.server_renderer_extensions = ["jsx", "js", "tsx", "ts"]
 
+  config.react.jsx_transform_options = {
+    optional: ['es7.classProperties']
+  }
+
   # Raises error for missing translations.
   # config.i18n.raise_on_missing_translations = true
 
