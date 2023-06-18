@@ -1,3 +1,3 @@
 class CsvFile < ApplicationRecord
-  mount_uploader :metadata, FileUploader
+  mount_uploaders :metadata, FileUploader
 end
