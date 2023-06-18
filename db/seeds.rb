@@ -19,7 +19,7 @@ Dir.glob("#{Rails.root}/test/fixtures/files/*.csv").each do |file_path|
         Category.upsert({ sym: category_symbol }, unique_by: :sym)
         Product.upsert({
             sku: sku, 
-            weight: row['weight'],
+            weight: row['weight'].to_f,
             unit: row['unit'],
             category_id: Category.find_by(sym: category_symbol).id, 
             created_at: row['date']

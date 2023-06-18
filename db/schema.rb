@@ -23,7 +23,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_18_071004) do
   end
 
   create_table "products", force: :cascade do |t|
-    t.decimal "weight"
+    t.float "weight"
     t.string "sku", null: false
     t.string "unit"
     t.bigint "category_id", null: false
