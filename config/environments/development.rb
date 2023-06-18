@@ -59,6 +59,8 @@ Rails.application.configure do
   # Suppress logger output for asset requests.
   config.assets.quiet = true
 
+  config.assets.compile = true
+
   config.react.server_renderer_extensions = ["jsx", "js", "tsx", "ts"]
 
   config.react.jsx_transform_options = {

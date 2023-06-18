@@ -7,7 +7,7 @@ type HelloWorldProps = {
 const HelloWorld: React.FC<HelloWorldProps> = (props) => {
   return (
     <>
-      Greeting {props.greeting}
+      Hello, {props.greeting}!
     </>
   );
 };

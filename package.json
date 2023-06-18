@@ -10,6 +10,7 @@
     "@babel/preset-typescript": "^7.22.5",
     "@babel/runtime": "7",
     "@hotwired/stimulus": "^3.2.1",
+    "@hotwired/turbo-rails": "^7.3.0",
     "@types/webpack-env": "^1.18.1",
     "babel-loader": "8",
     "compression-webpack-plugin": "9",
@@ -20,8 +21,9 @@
     "mini-css-extract-plugin": "^2.7.6",
     "prop-types": "^15.8.1",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0",
     "react_ujs": "^2.7.1",
+    "react-dom": "^18.2.0",
+    "sass": "^1.63.4",
     "shakapacker": "6.6.0",
     "style-loader": "^3.3.3",
     "terser-webpack-plugin": "5",
@@ -43,6 +45,7 @@
     "defaults"
   ],
   "scripts": {
-    "build": "esbuild app/javascript/*.* --bundle --sourcemap --outdir=app/assets/builds --public-path=assets"
+    "build": "esbuild app/javascript/*.* --bundle --sourcemap --outdir=app/assets/builds --public-path=assets",
+    "build:css": "sass ./app/assets/stylesheets/application.sass.scss:./app/assets/builds/application.css --no-source-map --load-path=node_modules"
   }
 }

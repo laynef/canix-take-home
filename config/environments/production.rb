@@ -78,6 +78,8 @@ Rails.application.configure do
   # Use default logging formatter so that PID and timestamp are not suppressed.
   config.log_formatter = ::Logger::Formatter.new
 
+  config.assets.compile = true
+
   config.react.server_renderer_extensions = ["jsx", "js", "tsx", "ts"]
 
   config.react.jsx_transform_options = {
