@@ -1,4 +1,4 @@
 // Support component names relative to this directory:
-const componentRequireContext = require.context("components", true);
-const ReactRailsUJS = require("react_ujs");
-ReactRailsUJS.useContext(componentRequireContext);
+const componentRequireContexts = require.context("components", true);
+const ReactRailsUJSS = require("react_ujs");
+ReactRailsUJSS.useContext(componentRequireContexts);
