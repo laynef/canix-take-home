@@ -45,7 +45,7 @@ default: &default
 
 development:
   <<: *default
-  compile: true
+  compile: false
   compiler_strategy: mtime
 
   # Reference: https://webpack.js.org/configuration/dev-server/
@@ -66,15 +66,15 @@ development:
     # mini-css-extract-plugin is a required dependency in both cases.
     inline_css: true
     # Defaults to the inverse of hmr. Uncomment to manually set this.
-    # live_reload: true
+    live_reload: true
     client:
       # Should we show a full-screen overlay in the browser when there are compiler errors or warnings?
       overlay: true
       # May also be a string
-      # webSocketURL:
-      #  hostname: '0.0.0.0'
-      #  pathname: '/ws'
-      #  port: 8080
+      webSocketURL:
+       hostname: '0.0.0.0'
+       pathname: '/ws'
+       port: 8080
     # Should we use gzip compression?
     compress: true
     # Note that apps that do not check the host are vulnerable to DNS rebinding attacks

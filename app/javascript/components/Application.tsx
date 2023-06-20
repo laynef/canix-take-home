@@ -1,13 +1,60 @@
 import * as React from "react"
+import axios from "axios"
 
 type ApplicationProps = {};
 
 const Application: React.FC<ApplicationProps> = () => {
+  let [products, setProducts] = React.useState([]);
+  let [files, setFiles] = React.useState([]);
+
+  const changeFiles = (e) => {
+    setFiles(e?.target?.files || []);
+  }
+
+  const fetchProducts = async () => {
+    try {
+      const response = await axios.get("/api/v1/products");
+      setProducts(Array.isArray(response?.data) ? response.data : []);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const uploadProducts = async () => {
+    try {
+      const formData = new FormData();
+  
+      files.map((file, index) => {
+        formData.append(`metadata${index}`, file);
+      });
+
+      await axios.post("/api/v1/products", formData);
+      const response = await axios.get("/api/v1/products");
+      setProducts(Array.isArray(response?.data) ? response.data : []);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+
+  React.useEffect(() => {
+    if (!products.length) fetchProducts();
+  }, [fetchProducts, products, setProducts]);
+
   return (
-    <h1 className="text-center w-100 font-weight-light">
-      Hello World!
-    </h1>
+    <div className="w-100 h-100">
+      <input type="file" accept="text/csv" multiple onChange={changeFiles} />
+      <button onClick={uploadProducts}>Upload</button>
+      {products.map((product, key) => (
+        <div key={key} className="card">
+          <div>date: {product.date}</div>
+          <div>product_id: {product.product_id}</div>
+          <div>weight: {product.weight}</div>
+          <div>unit: {product.unit}</div>
+        </div>
+      ))}
+    </div>
   );
 };
 
-export default Application
+export default Application;
