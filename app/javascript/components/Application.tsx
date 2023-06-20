@@ -29,8 +29,9 @@ const Application: React.FC<ApplicationProps> = () => {
       });
 
       await axios.post("/api/v1/products", formData);
+      changeFiles(null);
       const response = await axios.get("/api/v1/products");
-      setProducts(Array.isArray(response?.data) ? response.data : []);
+      setProducts(Array.isArray(response?.data) ? response.data : []);1
     } catch (error) {
       console.error(error);
     }
@@ -45,14 +46,18 @@ const Application: React.FC<ApplicationProps> = () => {
     <div className="w-100 h-100">
       <input type="file" accept="text/csv" multiple onChange={changeFiles} />
       <button onClick={uploadProducts}>Upload</button>
-      {products.map((product, key) => (
+      {Array.isArray(products) && products.length > 0 ? products.map((product, key) => (
         <div key={key} className="card">
           <div>date: {product.date}</div>
           <div>product_id: {product.product_id}</div>
           <div>weight: {product.weight}</div>
           <div>unit: {product.unit}</div>
         </div>
-      ))}
+      )) : (
+        <div className="card">
+          No data found
+        </div>
+      )}
     </div>
   );
 };
